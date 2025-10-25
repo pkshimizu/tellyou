@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dart format:*)",
+      "Bash(dart fix:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
