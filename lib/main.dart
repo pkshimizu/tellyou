@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tellyou/ui/home/screen.dart';
 
 void main() {
-  runApp(const TellYouApp());
+  runApp(const ProviderScope(child: TellYouApp()));
 }
 
 class TellYouApp extends StatelessWidget {

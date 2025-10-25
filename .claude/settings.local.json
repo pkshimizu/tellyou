@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(dart format:*)",
-      "Bash(dart fix:*)"
+      "Bash(dart fix:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
