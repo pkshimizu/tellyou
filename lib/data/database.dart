@@ -4,12 +4,16 @@ import 'dart:io';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import "package:sqlite3/sqlite3.dart";
+import 'package:tellyou/data/tables/github_tables.dart';
+import "package:tellyou/domain/models/github.dart";
 
 import '../config.dart';
 
 part "database.g.dart";
 
-@DriftDatabase(tables: [])
+@DriftDatabase(
+  tables: [GitHubAccountTable, GitHubOrganizationTable, GitHubRepositoryTable],
+)
 class Database extends _$Database {
   Database() : super(_openConnection());
 
