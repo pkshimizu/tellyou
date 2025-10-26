@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 
 // Project imports:
-import "package:tellyou/ui/widgets/colors.dart";
+import "package:tellyou/ui/colors.dart";
 
 enum TTextStyle { headline, title, body, label }
 

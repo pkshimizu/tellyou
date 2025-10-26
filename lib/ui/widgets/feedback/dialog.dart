@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 
 // Project imports:
-import "package:tellyou/ui/widgets/colors.dart";
+import "package:tellyou/ui/colors.dart";
 import "package:tellyou/ui/widgets.dart";
 
 enum TDialogSize {
@@ -68,7 +68,7 @@ abstract class TDialog {
         hAlign: TRowHAlign.spaceBetween,
         vAlign: TRowVAlign.center,
         children: [
-          TText(_title),
+          TText(_title, style: TTextStyle.title),
           TIconButton(
             icon: Icons.close,
             onPressed: (_) {
