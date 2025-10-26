@@ -66,9 +66,8 @@ abstract class TDialog {
         vAlign: TRowVAlign.center,
         children: [
           TText(_title, style: TTextStyle.title),
-          TIconButton(
-            icon: Icons.close,
-            onPressed: (_) {
+          CloseButton(
+            onPressed: () {
               close();
             },
           ),
