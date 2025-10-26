@@ -29,23 +29,20 @@ abstract class TDialog {
       context: context,
       builder: (context) {
         _context = context;
-        return FittedBox(
-          fit: BoxFit.none,
-          child: Material(
-            elevation: 10,
-            color: Colors.transparent,
-            child: Container(
-              width: _size.width,
-              decoration: BoxDecoration(
-                color: TColors(context).surfaceContainer.value,
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              ),
-              child: TColumn(
-                children: [
-                  _header(context),
-                  TPadding(all: 16, child: build(context)),
-                ],
-              ),
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: Container(
+            width: _size.width,
+            decoration: BoxDecoration(
+              color: TColors(context).surfaceContainer.value,
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
+            child: TColumn(
+              min: true,
+              children: [
+                _header(context),
+                TPadding(all: 16, child: build(context)),
+              ],
             ),
           ),
         );
