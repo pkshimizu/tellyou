@@ -1,6 +1,7 @@
 // display
-export "package:tellyou/ui/widgets/display/text.dart";
+export "package:tellyou/ui/widgets/display/avatar.dart";
 export "package:tellyou/ui/widgets/display/list.dart";
+export "package:tellyou/ui/widgets/display/text.dart";
 
 // feedback
 export "package:tellyou/ui/widgets/feedback/dialog.dart";

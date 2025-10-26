@@ -16,6 +16,7 @@ class TListItem {
   final double _topRightRadius;
   final double _bottomLeftRadius;
   final double _bottomRightRadius;
+  final TColor? _color;
   final VoidCallback? _onTap;
 
   const TListItem({
@@ -28,6 +29,7 @@ class TListItem {
     double topRightRadius = 0,
     double bottomLeftRadius = 0,
     double bottomRightRadius = 0,
+    TColor? color,
     VoidCallback? onTap,
   }) : _onTap = onTap,
        _selected = selected,
@@ -38,7 +40,8 @@ class TListItem {
        _topLeftRadius = topLeftRadius,
        _topRightRadius = topRightRadius,
        _bottomLeftRadius = bottomLeftRadius,
-       _bottomRightRadius = bottomRightRadius;
+       _bottomRightRadius = bottomRightRadius,
+       _color = color;
 }
 
 class TListView extends StatelessWidget {
@@ -51,25 +54,27 @@ class TListView extends StatelessWidget {
       itemCount: _items.length,
       itemBuilder: (context, index) {
         final item = _items[index];
-        return ListTile(
-          title: TText(item._title),
-          subtitle:
-              item._subtitle == null
-                  ? null
-                  : TText(item._subtitle, style: TTextStyle.label),
-          leading: _leading(item),
-          selected: item._selected,
-          selectedTileColor: TColors(context).secondaryContainer.value,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(item._topLeftRadius),
-              topRight: Radius.circular(item._topRightRadius),
-              bottomLeft: Radius.circular(item._bottomLeftRadius),
-              bottomRight: Radius.circular(item._bottomRightRadius),
+        return Material(
+          child: ListTile(
+            title: TText(item._title),
+            subtitle:
+                item._subtitle == null
+                    ? null
+                    : TText(item._subtitle, style: TTextStyle.label),
+            leading: _leading(item),
+            selected: item._selected,
+            selectedTileColor: TColors(context).primaryContainer.value,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(item._topLeftRadius),
+                topRight: Radius.circular(item._topRightRadius),
+                bottomLeft: Radius.circular(item._bottomLeftRadius),
+                bottomRight: Radius.circular(item._bottomRightRadius),
+              ),
             ),
+            onTap: item._onTap,
+            dense: true,
           ),
-          onTap: item._onTap,
-          dense: true,
         );
       },
     );
