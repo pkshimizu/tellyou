@@ -1,7 +1,5 @@
-// Dart imports:
 import "dart:io";
 
-// Package imports:
 import "package:path/path.dart" as p;
 
 class Path {

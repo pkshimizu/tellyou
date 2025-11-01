@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tellyou/ui/setting/dialog.dart';
+
 import "package:tellyou/ui/widgets.dart";
+import 'package:tellyou/ui/setting/dialog.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});

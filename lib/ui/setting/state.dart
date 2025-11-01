@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:tellyou/domain/models/github.dart';
 
 part "state.freezed.dart";

@@ -1,10 +1,8 @@
-// Flutter imports:
 import "package:flutter/material.dart";
 
-// Project imports:
+import "package:tellyou/ui/widgets.dart";
 
 // Project imports:
-import "package:tellyou/ui/widgets.dart";
 
 enum TButtonStyle { text, outlined, elevated }
 

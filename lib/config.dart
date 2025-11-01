@@ -1,10 +1,7 @@
-// Dart imports:
 import "dart:io";
 
-// Package imports:
 import "package:path_provider/path_provider.dart";
 
-// Project imports:
 import "domain/values/path.dart";
 
 const env = String.fromEnvironment("env");
