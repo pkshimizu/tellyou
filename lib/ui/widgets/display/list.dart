@@ -51,25 +51,27 @@ class TListView extends StatelessWidget {
       itemCount: _items.length,
       itemBuilder: (context, index) {
         final item = _items[index];
-        return ListTile(
-          title: TText(item._title),
-          subtitle:
-              item._subtitle == null
-                  ? null
-                  : TText(item._subtitle, style: TTextStyle.label),
-          leading: _leading(item),
-          selected: item._selected,
-          selectedTileColor: TColors(context).secondaryContainer.value,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(item._topLeftRadius),
-              topRight: Radius.circular(item._topRightRadius),
-              bottomLeft: Radius.circular(item._bottomLeftRadius),
-              bottomRight: Radius.circular(item._bottomRightRadius),
+        return Material(
+          child: ListTile(
+            title: TText(item._title),
+            subtitle:
+                item._subtitle == null
+                    ? null
+                    : TText(item._subtitle, style: TTextStyle.label),
+            leading: _leading(item),
+            selected: item._selected,
+            selectedTileColor: TColors(context).primaryContainer.value,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(item._topLeftRadius),
+                topRight: Radius.circular(item._topRightRadius),
+                bottomLeft: Radius.circular(item._bottomLeftRadius),
+                bottomRight: Radius.circular(item._bottomRightRadius),
+              ),
             ),
+            onTap: item._onTap,
+            dense: true,
           ),
-          onTap: item._onTap,
-          dense: true,
         );
       },
     );
