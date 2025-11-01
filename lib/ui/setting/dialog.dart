@@ -17,7 +17,7 @@ class SettingDialog extends TDialog {
           height: 300,
           children: [Expanded(child: SettingViewList())],
         ),
-        SettingViews(),
+        Expanded(child: SettingViews()),
       ],
     );
   }

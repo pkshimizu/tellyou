@@ -22,7 +22,12 @@ class TGrid extends StatelessWidget {
       rowGap: _rowGap,
       columnSizes: _columnSizes,
       columnGap: _columnGap,
-      children: _children,
+      children: [
+        for (final child in _children)
+          GridPlacement(
+            child: Align(alignment: Alignment.centerLeft, child: child),
+          ),
+      ],
     );
   }
 }
