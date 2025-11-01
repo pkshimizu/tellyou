@@ -1,0 +1,19 @@
+commands:
+  lint:
+    exec:
+      - dart format lib
+      - dart fix --apply lib
+      - flutter pub run import_sorter:main
+      - flutter analyze
+    working_dir: .
+    description: lint
+  add:
+    exec:
+      - flutter pub add <args>
+    working_dir: .
+    description: add package
+  watch:
+    exec:
+      - flutter pub run build_runner watch -d
+    working_dir: .
+    description: build_runner watch

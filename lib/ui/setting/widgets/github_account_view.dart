@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
-import 'package:tellyou/domain/models/github.dart';
+
 import "package:tellyou/ui/widgets.dart";
+import 'package:tellyou/domain/models/github.dart';
 
 class SettingGitHubAccountView extends StatelessWidget {
   final GitHubAccount _account;

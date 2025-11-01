@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tellyou/ui/setting/state.dart';
-import 'package:tellyou/ui/setting/view_model.dart';
 
 import "package:tellyou/ui/widgets.dart";
+import 'package:tellyou/ui/setting/state.dart';
+import 'package:tellyou/ui/setting/view_model.dart';
 
 class SettingViewList extends HookConsumerWidget {
   const SettingViewList({super.key});

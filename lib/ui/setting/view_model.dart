@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 import 'package:tellyou/domain/models/github.dart';
 import 'package:tellyou/ui/setting/state.dart';
 
