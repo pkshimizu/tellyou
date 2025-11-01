@@ -12,6 +12,7 @@ export "package:tellyou/ui/widgets/form/icon_button.dart";
 
 // layout
 export "package:tellyou/ui/widgets/layout/column.dart";
+export "package:tellyou/ui/widgets/layout/grid.dart";
 export "package:tellyou/ui/widgets/layout/padding.dart";
 export "package:tellyou/ui/widgets/layout/row.dart";
 export "package:tellyou/ui/widgets/layout/scaffold.dart";
