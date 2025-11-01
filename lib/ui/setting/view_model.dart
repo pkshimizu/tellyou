@@ -18,7 +18,25 @@ class SettingViewModel extends _$SettingViewModel {
           avatarUrl: "https://avatars.githubusercontent.com/u/300403?v=4",
           pat: "",
           patExpiredAt: DateTime(2027, 12, 31),
-          organizations: [],
+          organizations: [
+            GitHubOrganization(
+              id: 1,
+              accountId: 1,
+              login: 'pkshimizu',
+              htmlUrl: "https://github.com/pkshimizu",
+              avatarUrl: "https://avatars.githubusercontent.com/u/300403?v=4",
+              repositories: [
+                GitHubRepository(
+                  id: 1,
+                  organizationId: 1,
+                  name: "tellyou",
+                  htmlUrl: "https://github.com/pkshimizu/tellyou",
+                  avatarUrl:
+                      "https://avatars.githubusercontent.com/u/300403?v=4",
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );

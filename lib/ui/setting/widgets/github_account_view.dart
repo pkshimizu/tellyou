@@ -16,13 +16,16 @@ class SettingGitHubAccountView extends StatelessWidget {
       vAlign: TRowVAlign.center,
       gap: 1,
       children: [
-        TAvatar(url: _account.avatarUrl),
+        TAvatar(url: _account.avatarUrl, size: TAvatarSize.sm),
         TColumn(
           children: [
             TRow(
               children: [TText(_account.name), TText('(${_account.login})')],
             ),
-            TText('${dateFormat.format(_account.patExpiredAt)} expires'),
+            TText(
+              '${dateFormat.format(_account.patExpiredAt)} expires',
+              style: TTextStyle.label,
+            ),
           ],
         ),
       ],

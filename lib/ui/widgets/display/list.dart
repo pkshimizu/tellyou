@@ -16,7 +16,6 @@ class TListItem {
   final double _topRightRadius;
   final double _bottomLeftRadius;
   final double _bottomRightRadius;
-  final TColor? _color;
   final VoidCallback? _onTap;
 
   const TListItem({
@@ -29,7 +28,6 @@ class TListItem {
     double topRightRadius = 0,
     double bottomLeftRadius = 0,
     double bottomRightRadius = 0,
-    TColor? color,
     VoidCallback? onTap,
   }) : _onTap = onTap,
        _selected = selected,
@@ -40,8 +38,7 @@ class TListItem {
        _topLeftRadius = topLeftRadius,
        _topRightRadius = topRightRadius,
        _bottomLeftRadius = bottomLeftRadius,
-       _bottomRightRadius = bottomRightRadius,
-       _color = color;
+       _bottomRightRadius = bottomRightRadius;
 }
 
 class TListView extends StatelessWidget {
