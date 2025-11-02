@@ -9,6 +9,8 @@ export "package:tellyou/ui/widgets/feedback/dialog.dart";
 // form
 export "package:tellyou/ui/widgets/form/button.dart";
 export "package:tellyou/ui/widgets/form/icon_button.dart";
+export "package:tellyou/ui/widgets/form/form_field.dart";
+export "package:tellyou/ui/widgets/form/text_field.dart";
 
 // layout
 export "package:tellyou/ui/widgets/layout/column.dart";
