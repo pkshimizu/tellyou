@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:tellyou/config.dart';
 import 'package:tellyou/ui/home/screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Config().initialize();
   runApp(const ProviderScope(child: TellYouApp()));
 }
 

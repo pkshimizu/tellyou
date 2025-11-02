@@ -4,6 +4,7 @@ import 'dart:io';
 import "package:sqlite3/sqlite3.dart";
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import "package:tellyou/domain/models/github.dart";
 import 'package:tellyou/data/tables/github_tables.dart';
@@ -32,4 +33,9 @@ LazyDatabase _openConnection() {
 
     return NativeDatabase.createInBackground(file);
   });
+}
+
+@Riverpod(keepAlive: true)
+Database database(Ref ref) {
+  return Database();
 }

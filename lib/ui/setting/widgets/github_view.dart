@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tellyou/ui/setting/widgets/github_pat_register_dialog.dart';
 
 import "package:tellyou/ui/widgets.dart";
 import 'package:tellyou/ui/setting/view_model.dart';
@@ -21,7 +22,12 @@ class SettingGitHubView extends HookConsumerWidget {
           gap: 1,
           children: [
             TText("GitHub Accounts"),
-            TIconButton(icon: Icons.add, onPressed: (context) {}),
+            TIconButton(
+              icon: Icons.add,
+              onPressed: (context) {
+                GitHubPatRegisterDialog().show(context);
+              },
+            ),
           ],
         ),
         TColumn(
