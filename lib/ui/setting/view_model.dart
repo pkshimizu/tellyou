@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:tellyou/domain/models/github.dart';
+import 'package:tellyou/domain/use_cases/github/register_pat.dart';
 import 'package:tellyou/ui/setting/state.dart';
 
 part "view_model.g.dart";
@@ -45,5 +46,9 @@ class SettingViewModel extends _$SettingViewModel {
 
   void changeView(SettingView view) {
     state = state.copyWith(selectedView: view);
+  }
+
+  void registerGitHubPat(String pat) {
+    GitHubRegisterPatUseCase()(GitHubRegisterPatParams(pat: pat));
   }
 }

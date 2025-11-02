@@ -44,3 +44,16 @@ sealed class GitHubRepository with _$GitHubRepository {
     required String avatarUrl,
   }) = _GitHubRepository;
 }
+
+@freezed
+sealed class GitHubRestUser with _$GitHubRestUser {
+  const GitHubRestUser._();
+
+  const factory GitHubRestUser({
+    required String login,
+    required String name,
+    required String htmlUrl,
+    required String avatarUrl,
+    required DateTime expiresAt,
+  }) = _GitHubRestUser;
+}

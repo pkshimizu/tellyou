@@ -824,4 +824,267 @@ as String,
 
 }
 
+/// @nodoc
+mixin _$GitHubRestUser {
+
+ String get login; String get name; String get htmlUrl; String get avatarUrl; DateTime get expiresAt;
+/// Create a copy of GitHubRestUser
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GitHubRestUserCopyWith<GitHubRestUser> get copyWith => _$GitHubRestUserCopyWithImpl<GitHubRestUser>(this as GitHubRestUser, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GitHubRestUser&&(identical(other.login, login) || other.login == login)&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,login,name,htmlUrl,avatarUrl,expiresAt);
+
+@override
+String toString() {
+  return 'GitHubRestUser(login: $login, name: $name, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl, expiresAt: $expiresAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $GitHubRestUserCopyWith<$Res>  {
+  factory $GitHubRestUserCopyWith(GitHubRestUser value, $Res Function(GitHubRestUser) _then) = _$GitHubRestUserCopyWithImpl;
+@useResult
+$Res call({
+ String login, String name, String htmlUrl, String avatarUrl, DateTime expiresAt
+});
+
+
+
+
+}
+/// @nodoc
+class _$GitHubRestUserCopyWithImpl<$Res>
+    implements $GitHubRestUserCopyWith<$Res> {
+  _$GitHubRestUserCopyWithImpl(this._self, this._then);
+
+  final GitHubRestUser _self;
+  final $Res Function(GitHubRestUser) _then;
+
+/// Create a copy of GitHubRestUser
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? login = null,Object? name = null,Object? htmlUrl = null,Object? avatarUrl = null,Object? expiresAt = null,}) {
+  return _then(_self.copyWith(
+login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String,expiresAt: null == expiresAt ? _self.expiresAt : expiresAt // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [GitHubRestUser].
+extension GitHubRestUserPatterns on GitHubRestUser {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _GitHubRestUser value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _GitHubRestUser() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _GitHubRestUser value)  $default,){
+final _that = this;
+switch (_that) {
+case _GitHubRestUser():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _GitHubRestUser value)?  $default,){
+final _that = this;
+switch (_that) {
+case _GitHubRestUser() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login,  String name,  String htmlUrl,  String avatarUrl,  DateTime expiresAt)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _GitHubRestUser() when $default != null:
+return $default(_that.login,_that.name,_that.htmlUrl,_that.avatarUrl,_that.expiresAt);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login,  String name,  String htmlUrl,  String avatarUrl,  DateTime expiresAt)  $default,) {final _that = this;
+switch (_that) {
+case _GitHubRestUser():
+return $default(_that.login,_that.name,_that.htmlUrl,_that.avatarUrl,_that.expiresAt);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login,  String name,  String htmlUrl,  String avatarUrl,  DateTime expiresAt)?  $default,) {final _that = this;
+switch (_that) {
+case _GitHubRestUser() when $default != null:
+return $default(_that.login,_that.name,_that.htmlUrl,_that.avatarUrl,_that.expiresAt);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _GitHubRestUser extends GitHubRestUser {
+  const _GitHubRestUser({required this.login, required this.name, required this.htmlUrl, required this.avatarUrl, required this.expiresAt}): super._();
+  
+
+@override final  String login;
+@override final  String name;
+@override final  String htmlUrl;
+@override final  String avatarUrl;
+@override final  DateTime expiresAt;
+
+/// Create a copy of GitHubRestUser
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GitHubRestUserCopyWith<_GitHubRestUser> get copyWith => __$GitHubRestUserCopyWithImpl<_GitHubRestUser>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GitHubRestUser&&(identical(other.login, login) || other.login == login)&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl)&&(identical(other.expiresAt, expiresAt) || other.expiresAt == expiresAt));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,login,name,htmlUrl,avatarUrl,expiresAt);
+
+@override
+String toString() {
+  return 'GitHubRestUser(login: $login, name: $name, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl, expiresAt: $expiresAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GitHubRestUserCopyWith<$Res> implements $GitHubRestUserCopyWith<$Res> {
+  factory _$GitHubRestUserCopyWith(_GitHubRestUser value, $Res Function(_GitHubRestUser) _then) = __$GitHubRestUserCopyWithImpl;
+@override @useResult
+$Res call({
+ String login, String name, String htmlUrl, String avatarUrl, DateTime expiresAt
+});
+
+
+
+
+}
+/// @nodoc
+class __$GitHubRestUserCopyWithImpl<$Res>
+    implements _$GitHubRestUserCopyWith<$Res> {
+  __$GitHubRestUserCopyWithImpl(this._self, this._then);
+
+  final _GitHubRestUser _self;
+  final $Res Function(_GitHubRestUser) _then;
+
+/// Create a copy of GitHubRestUser
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? login = null,Object? name = null,Object? htmlUrl = null,Object? avatarUrl = null,Object? expiresAt = null,}) {
+  return _then(_GitHubRestUser(
+login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String,expiresAt: null == expiresAt ? _self.expiresAt : expiresAt // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+
+
+}
+
 // dart format on
