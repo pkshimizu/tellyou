@@ -18,13 +18,18 @@ class GitHubRegisterPatResult {
 
 class GitHubRegisterPatUseCase
     extends UseCase<GitHubRegisterPatParams, GitHubRegisterPatResult> {
+  final Database _database;
+
+  GitHubRegisterPatUseCase(this._database);
+
   @override
   Future<GitHubRegisterPatResult> execute(
     GitHubRegisterPatParams params,
   ) async {
     GitHubRestUser user = await GitHubRestClient().getUser(params.pat);
-    final db = Database();
-    final account = await GitHubAccountDao(db).createAccount(user, params.pat);
+    final account = await GitHubAccountDao(
+      _database,
+    ).createAccount(user, params.pat);
     return GitHubRegisterPatResult(account: account);
   }
 }

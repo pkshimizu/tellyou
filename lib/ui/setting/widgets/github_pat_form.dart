@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tellyou/ui/setting/view_model.dart';
 import 'package:tellyou/ui/widgets.dart';
 
 class GitHubPatForm extends HookConsumerWidget {
@@ -19,7 +20,16 @@ class GitHubPatForm extends HookConsumerWidget {
         ),
         TRow(
           hAlign: TRowHAlign.end,
-          children: [TButton(text: "Register", onPressed: (_) {})],
+          children: [
+            TButton(
+              text: "Register",
+              onPressed: (_) {
+                ref
+                    .read(settingViewModelProvider.notifier)
+                    .registerGitHubPat(pat.text);
+              },
+            ),
+          ],
         ),
       ],
     );

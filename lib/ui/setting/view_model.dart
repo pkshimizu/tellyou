@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:tellyou/data/database.dart';
 import 'package:tellyou/domain/models/github.dart';
 import 'package:tellyou/domain/use_cases/github/register_pat.dart';
 import 'package:tellyou/ui/setting/state.dart';
@@ -49,6 +50,7 @@ class SettingViewModel extends _$SettingViewModel {
   }
 
   void registerGitHubPat(String pat) {
-    GitHubRegisterPatUseCase()(GitHubRegisterPatParams(pat: pat));
+    final db = ref.read(databaseProvider);
+    GitHubRegisterPatUseCase(db)(GitHubRegisterPatParams(pat: pat));
   }
 }
