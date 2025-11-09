@@ -74,8 +74,8 @@ class GitHubRestClient {
       return GitHubRestRepository(
         organization: GitHubRestOrganization(
           login: owner["login"],
-          htmlUrl: owner["htmlUrl"],
-          avatarUrl: owner["avatarUrl"],
+          htmlUrl: owner["html_url"],
+          avatarUrl: owner["avatar_url"],
         ),
         name: repoMap['name'] as String,
         htmlUrl: repoMap['html_url'] as String,

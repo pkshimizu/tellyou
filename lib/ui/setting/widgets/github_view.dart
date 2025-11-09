@@ -52,7 +52,7 @@ class SettingGitHubView extends HookConsumerWidget {
                                   organization: organization,
                                   repositories: organization.repositories,
                                 ),
-                              GitHubRepositoryForm(),
+                              GitHubRepositoryForm(account: account),
                             ],
                           ),
                         ),
