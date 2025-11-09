@@ -96,7 +96,7 @@ class $GitHubAccountTableTable extends GitHubAccountTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'git_hub_account_table';
+  static const String $name = 'github_account';
   @override
   VerificationContext validateIntegrity(
     Insertable<GitHubAccount> instance, {
@@ -354,7 +354,7 @@ class $GitHubOrganizationTableTable extends GitHubOrganizationTable
     type: DriftSqlType.int,
     requiredDuringInsert: true,
     defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'REFERENCES git_hub_account_table (id)',
+      'REFERENCES github_account (id)',
     ),
   );
   static const VerificationMeta _loginMeta = const VerificationMeta('login');
@@ -400,7 +400,7 @@ class $GitHubOrganizationTableTable extends GitHubOrganizationTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'git_hub_organization_table';
+  static const String $name = 'github_organization';
   @override
   VerificationContext validateIntegrity(
     Insertable<GitHubOrganization> instance, {
@@ -606,7 +606,7 @@ class $GitHubRepositoryTableTable extends GitHubRepositoryTable
     type: DriftSqlType.int,
     requiredDuringInsert: true,
     defaultConstraints: GeneratedColumn.constraintIsAlways(
-      'REFERENCES git_hub_organization_table (id)',
+      'REFERENCES github_organization (id)',
     ),
   );
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -652,7 +652,7 @@ class $GitHubRepositoryTableTable extends GitHubRepositoryTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'git_hub_repository_table';
+  static const String $name = 'github_repository';
   @override
   VerificationContext validateIntegrity(
     Insertable<GitHubRepository> instance, {
@@ -2079,4 +2079,4 @@ final class DatabaseProvider
   }
 }
 
-String _$databaseHash() => r'b75e890cd139885a1a0cc0aed2268e451201765d';
+String _$databaseHash() => r'7a028266ff6f736c30cbf03d3151c1d32fd383a0';
