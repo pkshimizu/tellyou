@@ -1090,7 +1090,7 @@ as DateTime,
 /// @nodoc
 mixin _$GitHubRestOrganization {
 
- String get login; String get htmlUrl; String get avatarUrl;
+ String get login; String get avatarUrl;
 /// Create a copy of GitHubRestOrganization
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1101,16 +1101,16 @@ $GitHubRestOrganizationCopyWith<GitHubRestOrganization> get copyWith => _$GitHub
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GitHubRestOrganization&&(identical(other.login, login) || other.login == login)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GitHubRestOrganization&&(identical(other.login, login) || other.login == login)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,login,htmlUrl,avatarUrl);
+int get hashCode => Object.hash(runtimeType,login,avatarUrl);
 
 @override
 String toString() {
-  return 'GitHubRestOrganization(login: $login, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+  return 'GitHubRestOrganization(login: $login, avatarUrl: $avatarUrl)';
 }
 
 
@@ -1121,7 +1121,7 @@ abstract mixin class $GitHubRestOrganizationCopyWith<$Res>  {
   factory $GitHubRestOrganizationCopyWith(GitHubRestOrganization value, $Res Function(GitHubRestOrganization) _then) = _$GitHubRestOrganizationCopyWithImpl;
 @useResult
 $Res call({
- String login, String htmlUrl, String avatarUrl
+ String login, String avatarUrl
 });
 
 
@@ -1138,10 +1138,9 @@ class _$GitHubRestOrganizationCopyWithImpl<$Res>
 
 /// Create a copy of GitHubRestOrganization
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? login = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? login = null,Object? avatarUrl = null,}) {
   return _then(_self.copyWith(
 login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
-as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
 as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -1225,10 +1224,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login,  String htmlUrl,  String avatarUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login,  String avatarUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GitHubRestOrganization() when $default != null:
-return $default(_that.login,_that.htmlUrl,_that.avatarUrl);case _:
+return $default(_that.login,_that.avatarUrl);case _:
   return orElse();
 
 }
@@ -1246,10 +1245,10 @@ return $default(_that.login,_that.htmlUrl,_that.avatarUrl);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login,  String htmlUrl,  String avatarUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login,  String avatarUrl)  $default,) {final _that = this;
 switch (_that) {
 case _GitHubRestOrganization():
-return $default(_that.login,_that.htmlUrl,_that.avatarUrl);}
+return $default(_that.login,_that.avatarUrl);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -1263,10 +1262,10 @@ return $default(_that.login,_that.htmlUrl,_that.avatarUrl);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login,  String htmlUrl,  String avatarUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login,  String avatarUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _GitHubRestOrganization() when $default != null:
-return $default(_that.login,_that.htmlUrl,_that.avatarUrl);case _:
+return $default(_that.login,_that.avatarUrl);case _:
   return null;
 
 }
@@ -1278,11 +1277,10 @@ return $default(_that.login,_that.htmlUrl,_that.avatarUrl);case _:
 
 
 class _GitHubRestOrganization extends GitHubRestOrganization {
-  const _GitHubRestOrganization({required this.login, required this.htmlUrl, required this.avatarUrl}): super._();
+  const _GitHubRestOrganization({required this.login, required this.avatarUrl}): super._();
   
 
 @override final  String login;
-@override final  String htmlUrl;
 @override final  String avatarUrl;
 
 /// Create a copy of GitHubRestOrganization
@@ -1295,16 +1293,16 @@ _$GitHubRestOrganizationCopyWith<_GitHubRestOrganization> get copyWith => __$Git
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GitHubRestOrganization&&(identical(other.login, login) || other.login == login)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GitHubRestOrganization&&(identical(other.login, login) || other.login == login)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,login,htmlUrl,avatarUrl);
+int get hashCode => Object.hash(runtimeType,login,avatarUrl);
 
 @override
 String toString() {
-  return 'GitHubRestOrganization(login: $login, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+  return 'GitHubRestOrganization(login: $login, avatarUrl: $avatarUrl)';
 }
 
 
@@ -1315,7 +1313,7 @@ abstract mixin class _$GitHubRestOrganizationCopyWith<$Res> implements $GitHubRe
   factory _$GitHubRestOrganizationCopyWith(_GitHubRestOrganization value, $Res Function(_GitHubRestOrganization) _then) = __$GitHubRestOrganizationCopyWithImpl;
 @override @useResult
 $Res call({
- String login, String htmlUrl, String avatarUrl
+ String login, String avatarUrl
 });
 
 
@@ -1332,10 +1330,9 @@ class __$GitHubRestOrganizationCopyWithImpl<$Res>
 
 /// Create a copy of GitHubRestOrganization
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? login = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? login = null,Object? avatarUrl = null,}) {
   return _then(_GitHubRestOrganization(
 login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
-as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
 as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -1347,7 +1344,7 @@ as String,
 /// @nodoc
 mixin _$GitHubRestRepository {
 
- GitHubRestOrganization get organization; String get name; String get htmlUrl; String get avatarUrl;
+ String get name; String get htmlUrl;
 /// Create a copy of GitHubRestRepository
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1358,16 +1355,16 @@ $GitHubRestRepositoryCopyWith<GitHubRestRepository> get copyWith => _$GitHubRest
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GitHubRestRepository&&(identical(other.organization, organization) || other.organization == organization)&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GitHubRestRepository&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,organization,name,htmlUrl,avatarUrl);
+int get hashCode => Object.hash(runtimeType,name,htmlUrl);
 
 @override
 String toString() {
-  return 'GitHubRestRepository(organization: $organization, name: $name, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+  return 'GitHubRestRepository(name: $name, htmlUrl: $htmlUrl)';
 }
 
 
@@ -1378,11 +1375,11 @@ abstract mixin class $GitHubRestRepositoryCopyWith<$Res>  {
   factory $GitHubRestRepositoryCopyWith(GitHubRestRepository value, $Res Function(GitHubRestRepository) _then) = _$GitHubRestRepositoryCopyWithImpl;
 @useResult
 $Res call({
- GitHubRestOrganization organization, String name, String htmlUrl, String avatarUrl
+ String name, String htmlUrl
 });
 
 
-$GitHubRestOrganizationCopyWith<$Res> get organization;
+
 
 }
 /// @nodoc
@@ -1395,25 +1392,14 @@ class _$GitHubRestRepositoryCopyWithImpl<$Res>
 
 /// Create a copy of GitHubRestRepository
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? organization = null,Object? name = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? htmlUrl = null,}) {
   return _then(_self.copyWith(
-organization: null == organization ? _self.organization : organization // ignore: cast_nullable_to_non_nullable
-as GitHubRestOrganization,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
-as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
-/// Create a copy of GitHubRestRepository
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$GitHubRestOrganizationCopyWith<$Res> get organization {
-  
-  return $GitHubRestOrganizationCopyWith<$Res>(_self.organization, (value) {
-    return _then(_self.copyWith(organization: value));
-  });
-}
+
 }
 
 
@@ -1492,10 +1478,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GitHubRestOrganization organization,  String name,  String htmlUrl,  String avatarUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String htmlUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GitHubRestRepository() when $default != null:
-return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);case _:
+return $default(_that.name,_that.htmlUrl);case _:
   return orElse();
 
 }
@@ -1513,10 +1499,10 @@ return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GitHubRestOrganization organization,  String name,  String htmlUrl,  String avatarUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String htmlUrl)  $default,) {final _that = this;
 switch (_that) {
 case _GitHubRestRepository():
-return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);}
+return $default(_that.name,_that.htmlUrl);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -1530,10 +1516,10 @@ return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GitHubRestOrganization organization,  String name,  String htmlUrl,  String avatarUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String htmlUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _GitHubRestRepository() when $default != null:
-return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);case _:
+return $default(_that.name,_that.htmlUrl);case _:
   return null;
 
 }
@@ -1545,13 +1531,11 @@ return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);cas
 
 
 class _GitHubRestRepository extends GitHubRestRepository {
-  const _GitHubRestRepository({required this.organization, required this.name, required this.htmlUrl, required this.avatarUrl}): super._();
+  const _GitHubRestRepository({required this.name, required this.htmlUrl}): super._();
   
 
-@override final  GitHubRestOrganization organization;
 @override final  String name;
 @override final  String htmlUrl;
-@override final  String avatarUrl;
 
 /// Create a copy of GitHubRestRepository
 /// with the given fields replaced by the non-null parameter values.
@@ -1563,16 +1547,16 @@ _$GitHubRestRepositoryCopyWith<_GitHubRestRepository> get copyWith => __$GitHubR
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GitHubRestRepository&&(identical(other.organization, organization) || other.organization == organization)&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GitHubRestRepository&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,organization,name,htmlUrl,avatarUrl);
+int get hashCode => Object.hash(runtimeType,name,htmlUrl);
 
 @override
 String toString() {
-  return 'GitHubRestRepository(organization: $organization, name: $name, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+  return 'GitHubRestRepository(name: $name, htmlUrl: $htmlUrl)';
 }
 
 
@@ -1583,11 +1567,11 @@ abstract mixin class _$GitHubRestRepositoryCopyWith<$Res> implements $GitHubRest
   factory _$GitHubRestRepositoryCopyWith(_GitHubRestRepository value, $Res Function(_GitHubRestRepository) _then) = __$GitHubRestRepositoryCopyWithImpl;
 @override @useResult
 $Res call({
- GitHubRestOrganization organization, String name, String htmlUrl, String avatarUrl
+ String name, String htmlUrl
 });
 
 
-@override $GitHubRestOrganizationCopyWith<$Res> get organization;
+
 
 }
 /// @nodoc
@@ -1600,26 +1584,15 @@ class __$GitHubRestRepositoryCopyWithImpl<$Res>
 
 /// Create a copy of GitHubRestRepository
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? organization = null,Object? name = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? htmlUrl = null,}) {
   return _then(_GitHubRestRepository(
-organization: null == organization ? _self.organization : organization // ignore: cast_nullable_to_non_nullable
-as GitHubRestOrganization,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
-as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
 
-/// Create a copy of GitHubRestRepository
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$GitHubRestOrganizationCopyWith<$Res> get organization {
-  
-  return $GitHubRestOrganizationCopyWith<$Res>(_self.organization, (value) {
-    return _then(_self.copyWith(organization: value));
-  });
-}
+
 }
 
 // dart format on

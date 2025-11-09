@@ -13,26 +13,28 @@ class GitHubRepositoryForm extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final organizations = useState<List<GitHubRestOrganization>>([]);
     final repositories = useState<List<GitHubRestRepository>>([]);
+    final selectedOrganization = useState<GitHubRestOrganization?>(null);
     final selectedRepository = useState<GitHubRestRepository?>(null);
     final isLoading = useState(false);
 
     useEffect(() {
-      Future<void> loadRepositories() async {
+      Future<void> loadOrganizations() async {
         isLoading.value = true;
         try {
           final client = GitHubRestClient();
-          final repos = await client.getRepositories(_account.pat);
-          repositories.value = repos;
+          final orgs = await client.getOrganizations(_account.pat);
+          organizations.value = orgs;
         } catch (e) {
           // エラーハンドリング
-          debugPrint('Failed to load repositories: $e');
+          debugPrint('Failed to load organizations: $e');
         } finally {
           isLoading.value = false;
         }
       }
 
-      loadRepositories();
+      loadOrganizations();
       return null;
     }, []);
 
@@ -40,23 +42,28 @@ class GitHubRepositoryForm extends HookConsumerWidget {
       vAlign: TRowVAlign.center,
       gap: 2,
       children: [
-        isLoading.value
-            ? const TProgress()
-            : TSelect<GitHubRestRepository>(
-              items:
-                  repositories.value
-                      .map(
-                        (repo) => TSelectItem(
-                          repo,
-                          '${repo.organization.login}/${repo.name}',
-                        ),
-                      )
-                      .toList(),
-              value: selectedRepository.value,
-              onChanged: (value) {
-                selectedRepository.value = value;
-              },
-            ),
+        TSelect<GitHubRestOrganization>(
+          size: 160,
+          items:
+              organizations.value
+                  .map((org) => TSelectItem(org, org.login))
+                  .toList(),
+          value: selectedOrganization.value,
+          onChanged: (value) {
+            selectedOrganization.value = value;
+          },
+        ),
+        TSelect<GitHubRestRepository>(
+          size: 160,
+          items:
+              repositories.value
+                  .map((repo) => TSelectItem(repo, repo.name))
+                  .toList(),
+          value: selectedRepository.value,
+          onChanged: (value) {
+            selectedRepository.value = value;
+          },
+        ),
         TButton(
           text: "Add",
           onPressed: (_) {
