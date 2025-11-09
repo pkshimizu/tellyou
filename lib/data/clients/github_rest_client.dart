@@ -45,4 +45,96 @@ class GitHubRestClient {
       expiresAt: expiresAt,
     );
   }
+
+  Future<List<GitHubRestOrganization>> getOrganizations(String pat) async {
+    // GitHub APIでユーザー情報を取得（個人リポジトリ用）
+    final userResponse = await http.get(
+      Uri.parse('$_baseUrl/user'),
+      headers: {
+        'Authorization': 'Bearer $pat',
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    );
+
+    if (userResponse.statusCode != 200) {
+      throw Exception(
+        'Failed to get user info: ${userResponse.statusCode} ${userResponse.body}',
+      );
+    }
+
+    final userData = json.decode(userResponse.body) as Map<String, dynamic>;
+
+    // 個人アカウントを組織リストの最初に追加
+    final organizations = <GitHubRestOrganization>[
+      GitHubRestOrganization(
+        login: userData["login"],
+        avatarUrl: userData["avatar_url"],
+      ),
+    ];
+
+    // GitHub APIで組織情報を取得
+    final orgsResponse = await http.get(
+      Uri.parse('$_baseUrl/user/orgs?per_page=100'),
+      headers: {
+        'Authorization': 'Bearer $pat',
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    );
+
+    if (orgsResponse.statusCode != 200) {
+      throw Exception(
+        'Failed to get organizations: ${orgsResponse.statusCode} ${orgsResponse.body}',
+      );
+    }
+
+    final orgsData = json.decode(orgsResponse.body) as List<dynamic>;
+
+    // 組織リストを追加
+    organizations.addAll(
+      orgsData.map((orgData) {
+        final org = orgData as Map<String, dynamic>;
+        return GitHubRestOrganization(
+          login: org["login"],
+          avatarUrl: org["avatar_url"],
+        );
+      }),
+    );
+
+    return organizations;
+  }
+
+  Future<List<GitHubRestRepository>> getRepositories(
+    String pat,
+    String owner,
+  ) async {
+    // GitHub APIでリポジトリ情報を取得
+    // /users/{owner}/repos は個人・組織両方に対応
+    final reposResponse = await http.get(
+      Uri.parse('$_baseUrl/users/$owner/repos?per_page=100'),
+      headers: {
+        'Authorization': 'Bearer $pat',
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    );
+
+    if (reposResponse.statusCode != 200) {
+      throw Exception(
+        'Failed to get repositories: ${reposResponse.statusCode} ${reposResponse.body}',
+      );
+    }
+
+    final reposData = json.decode(reposResponse.body) as List<dynamic>;
+
+    return reposData.map((repo) {
+      final repoMap = repo as Map<String, dynamic>;
+
+      return GitHubRestRepository(
+        name: repoMap['name'] as String,
+        htmlUrl: repoMap['html_url'] as String,
+      );
+    }).toList();
+  }
 }
