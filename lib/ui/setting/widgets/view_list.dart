@@ -11,29 +11,34 @@ class SettingViewList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(settingViewModelProvider);
+    final asyncState = ref.watch(settingViewModelProvider);
 
-    return TListView(
-      items: [
-        TListItem(
-          title: "General",
-          selected: state.selectedView == SettingView.general,
-          onTap: () {
-            ref
-                .read(settingViewModelProvider.notifier)
-                .changeView(SettingView.general);
-          },
-        ),
-        TListItem(
-          title: "GitHub",
-          selected: state.selectedView == SettingView.github,
-          onTap: () {
-            ref
-                .read(settingViewModelProvider.notifier)
-                .changeView(SettingView.github);
-          },
-        ),
-      ],
+    return asyncState.when(
+      data:
+          (state) => TListView(
+            items: [
+              TListItem(
+                title: "General",
+                selected: state.selectedView == SettingView.general,
+                onTap: () {
+                  ref
+                      .read(settingViewModelProvider.notifier)
+                      .changeView(SettingView.general);
+                },
+              ),
+              TListItem(
+                title: "GitHub",
+                selected: state.selectedView == SettingView.github,
+                onTap: () {
+                  ref
+                      .read(settingViewModelProvider.notifier)
+                      .changeView(SettingView.github);
+                },
+              ),
+            ],
+          ),
+      loading: () => const TCenter(child: TProgress()),
+      error: (error, stack) => TText("Error: $error"),
     );
   }
 }

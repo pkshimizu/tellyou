@@ -13,48 +13,53 @@ class SettingGitHubView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(settingViewModelProvider);
+    final asyncState = ref.watch(settingViewModelProvider);
 
-    return TColumn(
-      children: [
-        TRow(
-          vAlign: TRowVAlign.center,
-          gap: 1,
-          children: [
-            TText("GitHub Accounts"),
-            TIconButton(
-              icon: Icons.add,
-              onPressed: (context) {
-                GitHubPatRegisterDialog().show(context);
-              },
-            ),
-          ],
-        ),
-        TColumn(
-          gap: 2,
-          children: [
-            for (final account in state.accounts)
-              TColumn(
+    return asyncState.when(
+      data:
+          (state) => TColumn(
+            children: [
+              TRow(
+                vAlign: TRowVAlign.center,
                 gap: 1,
                 children: [
-                  SettingGitHubAccountView(account: account),
-                  TPadding(
-                    left: 16,
-                    child: TColumn(
-                      children: [
-                        for (final organization in account.organizations)
-                          SettingGitHubRepositoryTable(
-                            organization: organization,
-                            repositories: organization.repositories,
-                          ),
-                      ],
-                    ),
+                  TText("GitHub Accounts"),
+                  TIconButton(
+                    icon: Icons.add,
+                    onPressed: (context) {
+                      GitHubPatRegisterDialog().show(context);
+                    },
                   ),
                 ],
               ),
-          ],
-        ),
-      ],
+              TColumn(
+                gap: 2,
+                children: [
+                  for (final account in state.accounts)
+                    TColumn(
+                      gap: 1,
+                      children: [
+                        SettingGitHubAccountView(account: account),
+                        TPadding(
+                          left: 16,
+                          child: TColumn(
+                            children: [
+                              for (final organization in account.organizations)
+                                SettingGitHubRepositoryTable(
+                                  organization: organization,
+                                  repositories: organization.repositories,
+                                ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                ],
+              ),
+            ],
+          ),
+      loading: () => const TCenter(child: TProgress()),
+      error: (error, stack) => TText("Error: $error"),
     );
   }
 }

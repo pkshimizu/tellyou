@@ -32,4 +32,8 @@ class GitHubAccountDao extends DatabaseAccessor<Database>
     final query = select(gitHubAccountTable)..where((tbl) => tbl.id.equals(id));
     return await query.getSingleOrNull();
   }
+
+  Future<List<GitHubAccount>> findAll() async {
+    return await select(gitHubAccountTable).get();
+  }
 }

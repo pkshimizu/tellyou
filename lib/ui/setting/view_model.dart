@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:tellyou/data/database.dart';
-import 'package:tellyou/domain/models/github.dart';
+import 'package:tellyou/data/daos/github/account_dao.dart';
 import 'package:tellyou/domain/use_cases/github/register_pat.dart';
 import 'package:tellyou/ui/setting/state.dart';
 
@@ -10,47 +10,22 @@ part "view_model.g.dart";
 @riverpod
 class SettingViewModel extends _$SettingViewModel {
   @override
-  SettingState build() {
-    return SettingState(
-      accounts: [
-        GitHubAccount(
-          id: 1,
-          login: "pkshimizu",
-          name: "Kenji Shimizu",
-          htmlUrl: "https://github.com/pkshimizu",
-          avatarUrl: "https://avatars.githubusercontent.com/u/300403?v=4",
-          pat: "",
-          patExpiredAt: DateTime(2027, 12, 31),
-          organizations: [
-            GitHubOrganization(
-              id: 1,
-              accountId: 1,
-              login: 'pkshimizu',
-              htmlUrl: "https://github.com/pkshimizu",
-              avatarUrl: "https://avatars.githubusercontent.com/u/300403?v=4",
-              repositories: [
-                GitHubRepository(
-                  id: 1,
-                  organizationId: 1,
-                  name: "tellyou",
-                  htmlUrl: "https://github.com/pkshimizu/tellyou",
-                  avatarUrl:
-                      "https://avatars.githubusercontent.com/u/300403?v=4",
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
-    );
+  Future<SettingState> build() async {
+    final db = ref.read(databaseProvider);
+    final accounts = await GitHubAccountDao(db).findAll();
+    return SettingState(accounts: accounts);
   }
 
   void changeView(SettingView view) {
-    state = state.copyWith(selectedView: view);
+    state.whenData((currentState) {
+      state = AsyncValue.data(currentState.copyWith(selectedView: view));
+    });
   }
 
-  void registerGitHubPat(String pat) {
+  Future<void> registerGitHubPat(String pat) async {
     final db = ref.read(databaseProvider);
-    GitHubRegisterPatUseCase(db)(GitHubRegisterPatParams(pat: pat));
+    await GitHubRegisterPatUseCase(db)(GitHubRegisterPatParams(pat: pat));
+    // アカウント情報を再読み込み
+    ref.invalidateSelf();
   }
 }

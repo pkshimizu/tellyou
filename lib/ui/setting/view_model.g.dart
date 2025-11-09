@@ -13,7 +13,7 @@ part of 'view_model.dart';
 const settingViewModelProvider = SettingViewModelProvider._();
 
 final class SettingViewModelProvider
-    extends $NotifierProvider<SettingViewModel, SettingState> {
+    extends $AsyncNotifierProvider<SettingViewModel, SettingState> {
   const SettingViewModelProvider._()
     : super(
         from: null,
@@ -31,30 +31,22 @@ final class SettingViewModelProvider
   @$internal
   @override
   SettingViewModel create() => SettingViewModel();
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(SettingState value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<SettingState>(value),
-    );
-  }
 }
 
-String _$settingViewModelHash() => r'2d15b5c0fd2690bb4700ed80f082d3b7aaefc099';
+String _$settingViewModelHash() => r'103f0f6b7e76ddeee20a02f93d9f90a642a87e42';
 
-abstract class _$SettingViewModel extends $Notifier<SettingState> {
-  SettingState build();
+abstract class _$SettingViewModel extends $AsyncNotifier<SettingState> {
+  FutureOr<SettingState> build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<SettingState, SettingState>;
+    final ref = this.ref as $Ref<AsyncValue<SettingState>, SettingState>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<SettingState, SettingState>,
-              SettingState,
+              AnyNotifier<AsyncValue<SettingState>, SettingState>,
+              AsyncValue<SettingState>,
               Object?,
               Object?
             >;
