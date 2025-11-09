@@ -26,6 +26,7 @@ class SettingGitHubView extends HookConsumerWidget {
                   TText("GitHub Accounts"),
                   TIconButton(
                     icon: Icons.add,
+                    size: 20,
                     onPressed: (context) {
                       GitHubPatRegisterDialog().show(context);
                     },

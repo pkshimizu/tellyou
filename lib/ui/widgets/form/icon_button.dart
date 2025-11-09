@@ -16,15 +16,21 @@ class TIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _sized(
-      IconButton(icon: Icon(_icon), onPressed: () => _onPressed(context)),
-    );
-  }
-
-  Widget _sized(Widget child) {
-    if (_size == null) {
-      return child;
+    if (_size != null) {
+      // サイズ指定がある場合は、アイコンサイズとパディングを調整
+      final iconSize = _size * 0.625; // アイコンサイズはボタンサイズの62.5%
+      return SizedBox(
+        width: _size,
+        height: _size,
+        child: IconButton(
+          icon: Icon(_icon, size: iconSize),
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(),
+          onPressed: () => _onPressed(context),
+        ),
+      );
     }
-    return SizedBox(width: _size, height: _size, child: child);
+
+    return IconButton(icon: Icon(_icon), onPressed: () => _onPressed(context));
   }
 }
