@@ -17,20 +17,21 @@ class GitHubRepositoryForm extends HookConsumerWidget {
     final repositories = useState<List<GitHubRestRepository>>([]);
     final selectedOrganization = useState<GitHubRestOrganization?>(null);
     final selectedRepository = useState<GitHubRestRepository?>(null);
-    final isLoading = useState(false);
+    final isLoadingOrgs = useState(false);
+    final isLoadingRepos = useState(false);
 
+    // 組織リストを読み込み
     useEffect(() {
       Future<void> loadOrganizations() async {
-        isLoading.value = true;
+        isLoadingOrgs.value = true;
         try {
           final client = GitHubRestClient();
           final orgs = await client.getOrganizations(_account.pat);
           organizations.value = orgs;
         } catch (e) {
-          // エラーハンドリング
           debugPrint('Failed to load organizations: $e');
         } finally {
-          isLoading.value = false;
+          isLoadingOrgs.value = false;
         }
       }
 
@@ -38,36 +39,68 @@ class GitHubRepositoryForm extends HookConsumerWidget {
       return null;
     }, []);
 
+    // 組織が選択されたらリポジトリを読み込み
+    useEffect(() {
+      Future<void> loadRepositories() async {
+        if (selectedOrganization.value == null) {
+          repositories.value = [];
+          return;
+        }
+
+        isLoadingRepos.value = true;
+        selectedRepository.value = null; // リポジトリ選択をリセット
+        try {
+          final client = GitHubRestClient();
+          final repos = await client.getRepositories(
+            _account.pat,
+            selectedOrganization.value!.login,
+          );
+          repositories.value = repos;
+        } catch (e) {
+          debugPrint('Failed to load repositories: $e');
+          repositories.value = [];
+        } finally {
+          isLoadingRepos.value = false;
+        }
+      }
+
+      loadRepositories();
+      return null;
+    }, [selectedOrganization.value]);
+
     return TRow(
       vAlign: TRowVAlign.center,
       gap: 2,
       children: [
-        TSelect<GitHubRestOrganization>(
-          size: 160,
-          items:
-              organizations.value
-                  .map((org) => TSelectItem(org, org.login))
-                  .toList(),
-          value: selectedOrganization.value,
-          onChanged: (value) {
-            selectedOrganization.value = value;
-          },
-        ),
-        TSelect<GitHubRestRepository>(
-          size: 160,
-          items:
-              repositories.value
-                  .map((repo) => TSelectItem(repo, repo.name))
-                  .toList(),
-          value: selectedRepository.value,
-          onChanged: (value) {
-            selectedRepository.value = value;
-          },
-        ),
+        isLoadingOrgs.value
+            ? const TProgress()
+            : TSelect<GitHubRestOrganization>(
+              size: 160,
+              items:
+                  organizations.value
+                      .map((org) => TSelectItem(org, org.login))
+                      .toList(),
+              value: selectedOrganization.value,
+              onChanged: (value) {
+                selectedOrganization.value = value;
+              },
+            ),
+        isLoadingRepos.value
+            ? const TProgress()
+            : TSelect<GitHubRestRepository>(
+              size: 160,
+              items:
+                  repositories.value
+                      .map((repo) => TSelectItem(repo, repo.name))
+                      .toList(),
+              value: selectedRepository.value,
+              onChanged: (value) {
+                selectedRepository.value = value;
+              },
+            ),
         TButton(
           text: "Add",
           onPressed: (_) {
-            // リポジトリを追加する処理
             if (selectedRepository.value != null) {
               debugPrint(
                 'Adding repository: ${selectedRepository.value!.name}',

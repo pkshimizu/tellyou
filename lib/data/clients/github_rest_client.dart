@@ -47,6 +47,32 @@ class GitHubRestClient {
   }
 
   Future<List<GitHubRestOrganization>> getOrganizations(String pat) async {
+    // GitHub APIでユーザー情報を取得（個人リポジトリ用）
+    final userResponse = await http.get(
+      Uri.parse('$_baseUrl/user'),
+      headers: {
+        'Authorization': 'Bearer $pat',
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    );
+
+    if (userResponse.statusCode != 200) {
+      throw Exception(
+        'Failed to get user info: ${userResponse.statusCode} ${userResponse.body}',
+      );
+    }
+
+    final userData = json.decode(userResponse.body) as Map<String, dynamic>;
+
+    // 個人アカウントを組織リストの最初に追加
+    final organizations = <GitHubRestOrganization>[
+      GitHubRestOrganization(
+        login: userData["login"],
+        avatarUrl: userData["avatar_url"],
+      ),
+    ];
+
     // GitHub APIで組織情報を取得
     final orgsResponse = await http.get(
       Uri.parse('$_baseUrl/user/orgs?per_page=100'),
@@ -65,23 +91,28 @@ class GitHubRestClient {
 
     final orgsData = json.decode(orgsResponse.body) as List<dynamic>;
 
-    return orgsData.map((orgData) {
-      final org = orgData as Map<String, dynamic>;
+    // 組織リストを追加
+    organizations.addAll(
+      orgsData.map((orgData) {
+        final org = orgData as Map<String, dynamic>;
+        return GitHubRestOrganization(
+          login: org["login"],
+          avatarUrl: org["avatar_url"],
+        );
+      }),
+    );
 
-      return GitHubRestOrganization(
-        login: org["login"],
-        avatarUrl: org["avatar_url"],
-      );
-    }).toList();
+    return organizations;
   }
 
   Future<List<GitHubRestRepository>> getRepositories(
     String pat,
-    String org,
+    String owner,
   ) async {
     // GitHub APIでリポジトリ情報を取得
+    // /users/{owner}/repos は個人・組織両方に対応
     final reposResponse = await http.get(
-      Uri.parse('$_baseUrl/orgs/$org/repos?per_page=100'),
+      Uri.parse('$_baseUrl/users/$owner/repos?per_page=100'),
       headers: {
         'Authorization': 'Bearer $pat',
         'Accept': 'application/vnd.github+json',
