@@ -12,16 +12,22 @@ class SettingViews extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(settingViewModelProvider);
+    final asyncState = ref.watch(settingViewModelProvider);
 
-    if (state.selectedView == SettingView.general) {
-      return TText("General");
-    }
+    return asyncState.when(
+      data: (state) {
+        if (state.selectedView == SettingView.general) {
+          return TText("General");
+        }
 
-    if (state.selectedView == SettingView.github) {
-      return SettingGitHubView();
-    }
+        if (state.selectedView == SettingView.github) {
+          return SettingGitHubView();
+        }
 
-    return TText("Unknown");
+        return TText("Unknown");
+      },
+      loading: () => const TCenter(child: TProgress()),
+      error: (error, stack) => TText("Error: $error"),
+    );
   }
 }

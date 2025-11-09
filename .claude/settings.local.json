@@ -3,7 +3,8 @@
     "allow": [
       "Bash(dart format:*)",
       "Bash(dart fix:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git rev-parse:*)"
     ],
     "deny": [],
     "ask": []
