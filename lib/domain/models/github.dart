@@ -57,3 +57,26 @@ sealed class GitHubRestUser with _$GitHubRestUser {
     required DateTime expiresAt,
   }) = _GitHubRestUser;
 }
+
+@freezed
+sealed class GitHubRestOrganization with _$GitHubRestOrganization {
+  const GitHubRestOrganization._();
+
+  const factory GitHubRestOrganization({
+    required String login,
+    required String htmlUrl,
+    required String avatarUrl,
+  }) = _GitHubRestOrganization;
+}
+
+@freezed
+sealed class GitHubRestRepository with _$GitHubRestRepository {
+  const GitHubRestRepository._();
+
+  const factory GitHubRestRepository({
+    required GitHubRestOrganization organization,
+    required String name,
+    required String htmlUrl,
+    required String avatarUrl,
+  }) = _GitHubRestRepository;
+}

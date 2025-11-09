@@ -1087,4 +1087,539 @@ as DateTime,
 
 }
 
+/// @nodoc
+mixin _$GitHubRestOrganization {
+
+ String get login; String get htmlUrl; String get avatarUrl;
+/// Create a copy of GitHubRestOrganization
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GitHubRestOrganizationCopyWith<GitHubRestOrganization> get copyWith => _$GitHubRestOrganizationCopyWithImpl<GitHubRestOrganization>(this as GitHubRestOrganization, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GitHubRestOrganization&&(identical(other.login, login) || other.login == login)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,login,htmlUrl,avatarUrl);
+
+@override
+String toString() {
+  return 'GitHubRestOrganization(login: $login, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $GitHubRestOrganizationCopyWith<$Res>  {
+  factory $GitHubRestOrganizationCopyWith(GitHubRestOrganization value, $Res Function(GitHubRestOrganization) _then) = _$GitHubRestOrganizationCopyWithImpl;
+@useResult
+$Res call({
+ String login, String htmlUrl, String avatarUrl
+});
+
+
+
+
+}
+/// @nodoc
+class _$GitHubRestOrganizationCopyWithImpl<$Res>
+    implements $GitHubRestOrganizationCopyWith<$Res> {
+  _$GitHubRestOrganizationCopyWithImpl(this._self, this._then);
+
+  final GitHubRestOrganization _self;
+  final $Res Function(GitHubRestOrganization) _then;
+
+/// Create a copy of GitHubRestOrganization
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? login = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+  return _then(_self.copyWith(
+login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
+as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [GitHubRestOrganization].
+extension GitHubRestOrganizationPatterns on GitHubRestOrganization {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _GitHubRestOrganization value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _GitHubRestOrganization() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _GitHubRestOrganization value)  $default,){
+final _that = this;
+switch (_that) {
+case _GitHubRestOrganization():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _GitHubRestOrganization value)?  $default,){
+final _that = this;
+switch (_that) {
+case _GitHubRestOrganization() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login,  String htmlUrl,  String avatarUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _GitHubRestOrganization() when $default != null:
+return $default(_that.login,_that.htmlUrl,_that.avatarUrl);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login,  String htmlUrl,  String avatarUrl)  $default,) {final _that = this;
+switch (_that) {
+case _GitHubRestOrganization():
+return $default(_that.login,_that.htmlUrl,_that.avatarUrl);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login,  String htmlUrl,  String avatarUrl)?  $default,) {final _that = this;
+switch (_that) {
+case _GitHubRestOrganization() when $default != null:
+return $default(_that.login,_that.htmlUrl,_that.avatarUrl);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _GitHubRestOrganization extends GitHubRestOrganization {
+  const _GitHubRestOrganization({required this.login, required this.htmlUrl, required this.avatarUrl}): super._();
+  
+
+@override final  String login;
+@override final  String htmlUrl;
+@override final  String avatarUrl;
+
+/// Create a copy of GitHubRestOrganization
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GitHubRestOrganizationCopyWith<_GitHubRestOrganization> get copyWith => __$GitHubRestOrganizationCopyWithImpl<_GitHubRestOrganization>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GitHubRestOrganization&&(identical(other.login, login) || other.login == login)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,login,htmlUrl,avatarUrl);
+
+@override
+String toString() {
+  return 'GitHubRestOrganization(login: $login, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GitHubRestOrganizationCopyWith<$Res> implements $GitHubRestOrganizationCopyWith<$Res> {
+  factory _$GitHubRestOrganizationCopyWith(_GitHubRestOrganization value, $Res Function(_GitHubRestOrganization) _then) = __$GitHubRestOrganizationCopyWithImpl;
+@override @useResult
+$Res call({
+ String login, String htmlUrl, String avatarUrl
+});
+
+
+
+
+}
+/// @nodoc
+class __$GitHubRestOrganizationCopyWithImpl<$Res>
+    implements _$GitHubRestOrganizationCopyWith<$Res> {
+  __$GitHubRestOrganizationCopyWithImpl(this._self, this._then);
+
+  final _GitHubRestOrganization _self;
+  final $Res Function(_GitHubRestOrganization) _then;
+
+/// Create a copy of GitHubRestOrganization
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? login = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+  return _then(_GitHubRestOrganization(
+login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
+as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$GitHubRestRepository {
+
+ GitHubRestOrganization get organization; String get name; String get htmlUrl; String get avatarUrl;
+/// Create a copy of GitHubRestRepository
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GitHubRestRepositoryCopyWith<GitHubRestRepository> get copyWith => _$GitHubRestRepositoryCopyWithImpl<GitHubRestRepository>(this as GitHubRestRepository, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GitHubRestRepository&&(identical(other.organization, organization) || other.organization == organization)&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,organization,name,htmlUrl,avatarUrl);
+
+@override
+String toString() {
+  return 'GitHubRestRepository(organization: $organization, name: $name, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $GitHubRestRepositoryCopyWith<$Res>  {
+  factory $GitHubRestRepositoryCopyWith(GitHubRestRepository value, $Res Function(GitHubRestRepository) _then) = _$GitHubRestRepositoryCopyWithImpl;
+@useResult
+$Res call({
+ GitHubRestOrganization organization, String name, String htmlUrl, String avatarUrl
+});
+
+
+$GitHubRestOrganizationCopyWith<$Res> get organization;
+
+}
+/// @nodoc
+class _$GitHubRestRepositoryCopyWithImpl<$Res>
+    implements $GitHubRestRepositoryCopyWith<$Res> {
+  _$GitHubRestRepositoryCopyWithImpl(this._self, this._then);
+
+  final GitHubRestRepository _self;
+  final $Res Function(GitHubRestRepository) _then;
+
+/// Create a copy of GitHubRestRepository
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? organization = null,Object? name = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+  return _then(_self.copyWith(
+organization: null == organization ? _self.organization : organization // ignore: cast_nullable_to_non_nullable
+as GitHubRestOrganization,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+/// Create a copy of GitHubRestRepository
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GitHubRestOrganizationCopyWith<$Res> get organization {
+  
+  return $GitHubRestOrganizationCopyWith<$Res>(_self.organization, (value) {
+    return _then(_self.copyWith(organization: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [GitHubRestRepository].
+extension GitHubRestRepositoryPatterns on GitHubRestRepository {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _GitHubRestRepository value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _GitHubRestRepository() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _GitHubRestRepository value)  $default,){
+final _that = this;
+switch (_that) {
+case _GitHubRestRepository():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _GitHubRestRepository value)?  $default,){
+final _that = this;
+switch (_that) {
+case _GitHubRestRepository() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GitHubRestOrganization organization,  String name,  String htmlUrl,  String avatarUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _GitHubRestRepository() when $default != null:
+return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GitHubRestOrganization organization,  String name,  String htmlUrl,  String avatarUrl)  $default,) {final _that = this;
+switch (_that) {
+case _GitHubRestRepository():
+return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GitHubRestOrganization organization,  String name,  String htmlUrl,  String avatarUrl)?  $default,) {final _that = this;
+switch (_that) {
+case _GitHubRestRepository() when $default != null:
+return $default(_that.organization,_that.name,_that.htmlUrl,_that.avatarUrl);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _GitHubRestRepository extends GitHubRestRepository {
+  const _GitHubRestRepository({required this.organization, required this.name, required this.htmlUrl, required this.avatarUrl}): super._();
+  
+
+@override final  GitHubRestOrganization organization;
+@override final  String name;
+@override final  String htmlUrl;
+@override final  String avatarUrl;
+
+/// Create a copy of GitHubRestRepository
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GitHubRestRepositoryCopyWith<_GitHubRestRepository> get copyWith => __$GitHubRestRepositoryCopyWithImpl<_GitHubRestRepository>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GitHubRestRepository&&(identical(other.organization, organization) || other.organization == organization)&&(identical(other.name, name) || other.name == name)&&(identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,organization,name,htmlUrl,avatarUrl);
+
+@override
+String toString() {
+  return 'GitHubRestRepository(organization: $organization, name: $name, htmlUrl: $htmlUrl, avatarUrl: $avatarUrl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GitHubRestRepositoryCopyWith<$Res> implements $GitHubRestRepositoryCopyWith<$Res> {
+  factory _$GitHubRestRepositoryCopyWith(_GitHubRestRepository value, $Res Function(_GitHubRestRepository) _then) = __$GitHubRestRepositoryCopyWithImpl;
+@override @useResult
+$Res call({
+ GitHubRestOrganization organization, String name, String htmlUrl, String avatarUrl
+});
+
+
+@override $GitHubRestOrganizationCopyWith<$Res> get organization;
+
+}
+/// @nodoc
+class __$GitHubRestRepositoryCopyWithImpl<$Res>
+    implements _$GitHubRestRepositoryCopyWith<$Res> {
+  __$GitHubRestRepositoryCopyWithImpl(this._self, this._then);
+
+  final _GitHubRestRepository _self;
+  final $Res Function(_GitHubRestRepository) _then;
+
+/// Create a copy of GitHubRestRepository
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? organization = null,Object? name = null,Object? htmlUrl = null,Object? avatarUrl = null,}) {
+  return _then(_GitHubRestRepository(
+organization: null == organization ? _self.organization : organization // ignore: cast_nullable_to_non_nullable
+as GitHubRestOrganization,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,htmlUrl: null == htmlUrl ? _self.htmlUrl : htmlUrl // ignore: cast_nullable_to_non_nullable
+as String,avatarUrl: null == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+/// Create a copy of GitHubRestRepository
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GitHubRestOrganizationCopyWith<$Res> get organization {
+  
+  return $GitHubRestOrganizationCopyWith<$Res>(_self.organization, (value) {
+    return _then(_self.copyWith(organization: value));
+  });
+}
+}
+
 // dart format on

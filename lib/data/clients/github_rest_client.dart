@@ -45,4 +45,42 @@ class GitHubRestClient {
       expiresAt: expiresAt,
     );
   }
+
+  Future<List<GitHubRestRepository>> getRepositories(String pat) async {
+    // GitHub APIでリポジトリ情報を取得
+    final reposResponse = await http.get(
+      Uri.parse(
+        '$_baseUrl/user/repos?per_page=100&affiliation=owner,collaborator,organization_member',
+      ),
+      headers: {
+        'Authorization': 'Bearer $pat',
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    );
+
+    if (reposResponse.statusCode != 200) {
+      throw Exception(
+        'Failed to get repositories: ${reposResponse.statusCode} ${reposResponse.body}',
+      );
+    }
+
+    final reposData = json.decode(reposResponse.body) as List<dynamic>;
+
+    return reposData.map((repo) {
+      final repoMap = repo as Map<String, dynamic>;
+      final owner = repoMap['owner'] as Map<String, dynamic>;
+
+      return GitHubRestRepository(
+        organization: GitHubRestOrganization(
+          login: owner["login"],
+          htmlUrl: owner["htmlUrl"],
+          avatarUrl: owner["avatarUrl"],
+        ),
+        name: repoMap['name'] as String,
+        htmlUrl: repoMap['html_url'] as String,
+        avatarUrl: owner['avatar_url'] as String,
+      );
+    }).toList();
+  }
 }
