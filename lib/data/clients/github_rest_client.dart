@@ -47,9 +47,9 @@ class GitHubRestClient {
   }
 
   Future<List<GitHubRestOrganization>> getOrganizations(String pat) async {
-    // GitHub APIでリポジトリ情報を取得
-    final reposResponse = await http.get(
-      Uri.parse('$_baseUrl/users/orgs?per_page=100'),
+    // GitHub APIで組織情報を取得
+    final orgsResponse = await http.get(
+      Uri.parse('$_baseUrl/user/orgs?per_page=100'),
       headers: {
         'Authorization': 'Bearer $pat',
         'Accept': 'application/vnd.github+json',
@@ -57,16 +57,16 @@ class GitHubRestClient {
       },
     );
 
-    if (reposResponse.statusCode != 200) {
+    if (orgsResponse.statusCode != 200) {
       throw Exception(
-        'Failed to get organizations: ${reposResponse.statusCode} ${reposResponse.body}',
+        'Failed to get organizations: ${orgsResponse.statusCode} ${orgsResponse.body}',
       );
     }
 
-    final orgsData = json.decode(reposResponse.body) as List<dynamic>;
+    final orgsData = json.decode(orgsResponse.body) as List<dynamic>;
 
-    return orgsData.map((repData) {
-      final org = repData as Map<String, dynamic>;
+    return orgsData.map((orgData) {
+      final org = orgData as Map<String, dynamic>;
 
       return GitHubRestOrganization(
         login: org["login"],
